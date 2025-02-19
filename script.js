@@ -11,8 +11,9 @@ let srcs = [];
 for (let image of images) {
   let src = image.getAttribute("src");
   if (src !== "") {
-    image.setAttribute("onclick", `showLarge("${src}");playMusic();`);
-    srcs.push(src);
+    let hqSrc = src.replace("/thumbnails", "").replace(/\.jpg$/i, ".png");
+    image.setAttribute("onclick", `showLarge("${hqSrc}");playMusic();`);
+    srcs.push(hqSrc);
   }
 }
 
