@@ -1,7 +1,9 @@
 const images = document.querySelectorAll("img");
 const large_image_container = document.getElementById("large_image_container");
 const large_image = document.getElementById("large_image");
+const music = document.getElementById("music");
 let currentImageIndex = -1;
+let playingAudio = false;
 
 large_image_container.setAttribute("onclick", "hideLarge()");
 
@@ -9,7 +11,7 @@ let srcs = [];
 for (let image of images) {
   let src = image.getAttribute("src");
   if (src !== "") {
-    image.setAttribute("onclick", `showLarge("${src}")`);
+    image.setAttribute("onclick", `showLarge("${src}");playMusic();`);
     srcs.push(src);
   }
 }
@@ -37,6 +39,10 @@ function next() {
   if (large_image.style.opacity === "1") {
     showLarge(srcs[(currentImageIndex + 1) % srcs.length]);
   }
+}
+
+function playMusic() {
+  music.play();
 }
 
 document.addEventListener("keydown", (e) => {
