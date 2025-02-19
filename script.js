@@ -3,7 +3,7 @@ const large_image_container = document.getElementById("large_image_container");
 const large_image = document.getElementById("large_image");
 const music = document.getElementById("music");
 let currentImageIndex = -1;
-let playingAudio = false;
+let playedMusic = false;
 
 large_image_container.setAttribute("onclick", "hideLarge()");
 
@@ -42,7 +42,10 @@ function next() {
 }
 
 function playMusic() {
-  music.play();
+  if (!playedMusic) {
+    music.play();
+    playedMusic = true;
+  }
 }
 
 document.addEventListener("keydown", (e) => {
