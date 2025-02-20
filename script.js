@@ -32,12 +32,14 @@ function hideLarge() {
 
 function previous() {
   if (large_image.style.opacity === "1") {
+    large_image.setAttribute("src", "");
     showLarge(srcs[(currentImageIndex - 1 + srcs.length) % srcs.length]);
   }
 }
 
 function next() {
   if (large_image.style.opacity === "1") {
+    large_image.setAttribute("src", "");
     showLarge(srcs[(currentImageIndex + 1) % srcs.length]);
   }
 }
