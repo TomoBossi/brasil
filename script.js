@@ -30,17 +30,10 @@ function hideLarge() {
   large_image_container.style.zIndex = "-1";
 }
 
-function previous() {
+function next(step = 1) {
   if (large_image.style.opacity === "1") {
     large_image.setAttribute("src", "");
-    showLarge(srcs[(currentImageIndex - 1 + srcs.length) % srcs.length]);
-  }
-}
-
-function next() {
-  if (large_image.style.opacity === "1") {
-    large_image.setAttribute("src", "");
-    showLarge(srcs[(currentImageIndex + 1) % srcs.length]);
+    showLarge(srcs[(currentImageIndex + step + srcs.length) % srcs.length]);
   }
 }
 
@@ -57,13 +50,13 @@ document.addEventListener("keydown", (e) => {
       e.preventDefault();
       hideLarge();
       break;
-    case "ArrowLeft":
-      e.preventDefault();
-      previous();
-      break;
     case "ArrowRight":
       e.preventDefault();
       next();
+      break;
+    case "ArrowLeft":
+      e.preventDefault();
+      next(-1);
       break;
   }
 });
